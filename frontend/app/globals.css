@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light dark;
+
+  /* Raw palette tokens — Fresh Mint-Teal & Crisp Cool Slate */
+  --bg-canvas-light: #f6f9fc;
+  --bg-canvas-dark: #0d1218;
+
+  --surface-card-light: #ffffff;
+  --surface-card-dark: #141b23;
+
+  --surface-muted-light: #eff4f9;
+  --surface-muted-dark: #1b2430;
+
+  --surface-hover-light: #e5edf6;
+  --surface-hover-dark: #232f3e;
+
+  --surface-input-light: #ffffff;
+  --surface-input-dark: #10161d;
+
+  --text-primary-light: #0f172a;
+  --text-primary-dark: #f1f5f9;
+
+  --text-secondary-light: #475569;
+  --text-secondary-dark: #b4c0cf;
+
+  --text-muted-light: #64748b;
+  --text-muted-dark: #8c9bb0;
+
+  --border-subtle-light: #e2e8f0;
+  --border-subtle-dark: #263140;
+
+  /* >= 3:1 contrast against surface-input for interactive boundaries (WCAG 1.4.11) */
+  --border-default-light: #7b8b9e;
+  --border-default-dark: #5b6b80;
+
+  /* Fresh Jade / Mint-Teal Brand Tokens (>= 4.5:1 text contrast) */
+  --brand-primary-light: #0d7a68;
+  --brand-primary-dark: #2dd4bf;
+  --brand-primary-hover-light: #0a6354;
+  --brand-primary-hover-dark: #5eead4;
+  --brand-primary-fg-light: #ffffff;
+  --brand-primary-fg-dark: #042f2e;
+
+  --brand-subtle-bg-light: #e6faf6;
+  --brand-subtle-bg-dark: #0e2d2d;
+  --brand-subtle-fg-light: #065f5b;
+  --brand-subtle-fg-dark: #5eead4;
+  --brand-subtle-border-light: #a7f3e4;
+  --brand-subtle-border-dark: #1b4d4a;
+
+  --success-bg-light: #e6faf6;
+  --success-bg-dark: #0e2d2d;
+  --success-fg-light: #065f5b;
+  --success-fg-dark: #5eead4;
+  --success-border-light: #a7f3e4;
+  --success-border-dark: #1b4d4a;
+
+  --warning-bg-light: #fffbeb;
+  --warning-bg-dark: #2b2109;
+  --warning-fg-light: #92400e;
+  --warning-fg-dark: #fcd34d;
+  --warning-border-light: #fde68a;
+  --warning-border-dark: #6b4e11;
+
+  --danger-bg-light: #dc2626;
+  --danger-bg-dark: #f87171;
+  --danger-fg-light: #ffffff;
+  --danger-fg-dark: #2a0909;
+
+  --scrollbar-track-light: #eef3f8;
+  --scrollbar-track-dark: #141b23;
+  --scrollbar-thumb-light: #94a3b8;
+  --scrollbar-thumb-dark: #475569;
+
+  /* Default resolved values (Light baseline + media fallback for older browsers) */
+  --bg-canvas: var(--bg-canvas-light);
+  --surface-card: var(--surface-card-light);
+  --surface-muted: var(--surface-muted-light);
+  --surface-hover: var(--surface-hover-light);
+  --surface-input: var(--surface-input-light);
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --text-muted: var(--text-muted-light);
+  --border-subtle: var(--border-subtle-light);
+  --border-default: var(--border-default-light);
+  --brand-primary: var(--brand-primary-light);
+  --brand-primary-hover: var(--brand-primary-hover-light);
+  --brand-primary-fg: var(--brand-primary-fg-light);
+  --brand-subtle-bg: var(--brand-subtle-bg-light);
+  --brand-subtle-fg: var(--brand-subtle-fg-light);
+  --brand-subtle-border: var(--brand-subtle-border-light);
+  --success-bg: var(--success-bg-light);
+  --success-fg: var(--success-fg-light);
+  --success-border: var(--success-border-light);
+  --warning-bg: var(--warning-bg-light);
+  --warning-fg: var(--warning-fg-light);
+  --warning-border: var(--warning-border-light);
+  --danger-bg: var(--danger-bg-light);
+  --danger-fg: var(--danger-fg-light);
+  --scrollbar-track: var(--scrollbar-track-light);
+  --scrollbar-thumb: var(--scrollbar-thumb-light);
+
+  @media (prefers-color-scheme: dark) {
+    --bg-canvas: var(--bg-canvas-dark);
+    --surface-card: var(--surface-card-dark);
+    --surface-muted: var(--surface-muted-dark);
+    --surface-hover: var(--surface-hover-dark);
+    --surface-input: var(--surface-input-dark);
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --text-muted: var(--text-muted-dark);
+    --border-subtle: var(--border-subtle-dark);
+    --border-default: var(--border-default-dark);
+    --brand-primary: var(--brand-primary-dark);
+    --brand-primary-hover: var(--brand-primary-hover-dark);
+    --brand-primary-fg: var(--brand-primary-fg-dark);
+    --brand-subtle-bg: var(--brand-subtle-bg-dark);
+    --brand-subtle-fg: var(--brand-subtle-fg-dark);
+    --brand-subtle-border: var(--brand-subtle-border-dark);
+    --success-bg: var(--success-bg-dark);
+    --success-fg: var(--success-fg-dark);
+    --success-border: var(--success-border-dark);
+    --warning-bg: var(--warning-bg-dark);
+    --warning-fg: var(--warning-fg-dark);
+    --warning-border: var(--warning-border-dark);
+    --danger-bg: var(--danger-bg-dark);
+    --danger-fg: var(--danger-fg-dark);
+    --scrollbar-track: var(--scrollbar-track-dark);
+    --scrollbar-thumb: var(--scrollbar-thumb-dark);
+  }
+
+  /* Modern light-dark() driven directly by computed color-scheme */
+  @supports (color: light-dark(white, black)) {
+    --bg-canvas: light-dark(var(--bg-canvas-light), var(--bg-canvas-dark));
+    --surface-card: light-dark(var(--surface-card-light), var(--surface-card-dark));
+    --surface-muted: light-dark(var(--surface-muted-light), var(--surface-muted-dark));
+    --surface-hover: light-dark(var(--surface-hover-light), var(--surface-hover-dark));
+    --surface-input: light-dark(var(--surface-input-light), var(--surface-input-dark));
+    --text-primary: light-dark(var(--text-primary-light), var(--text-primary-dark));
+    --text-secondary: light-dark(var(--text-secondary-light), var(--text-secondary-dark));
+    --text-muted: light-dark(var(--text-muted-light), var(--text-muted-dark));
+    --border-subtle: light-dark(var(--border-subtle-light), var(--border-subtle-dark));
+    --border-default: light-dark(var(--border-default-light), var(--border-default-dark));
+    --brand-primary: light-dark(var(--brand-primary-light), var(--brand-primary-dark));
+    --brand-primary-hover: light-dark(var(--brand-primary-hover-light), var(--brand-primary-hover-dark));
+    --brand-primary-fg: light-dark(var(--brand-primary-fg-light), var(--brand-primary-fg-dark));
+    --brand-subtle-bg: light-dark(var(--brand-subtle-bg-light), var(--brand-subtle-bg-dark));
+    --brand-subtle-fg: light-dark(var(--brand-subtle-fg-light), var(--brand-subtle-fg-dark));
+    --brand-subtle-border: light-dark(var(--brand-subtle-border-light), var(--brand-subtle-border-dark));
+    --success-bg: light-dark(var(--success-bg-light), var(--success-bg-dark));
+    --success-fg: light-dark(var(--success-fg-light), var(--success-fg-dark));
+    --success-border: light-dark(var(--success-border-light), var(--success-border-dark));
+    --warning-bg: light-dark(var(--warning-bg-light), var(--warning-bg-dark));
+    --warning-fg: light-dark(var(--warning-fg-light), var(--warning-fg-dark));
+    --warning-border: light-dark(var(--warning-border-light), var(--warning-border-dark));
+    --danger-bg: light-dark(var(--danger-bg-light), var(--danger-bg-dark));
+    --danger-fg: light-dark(var(--danger-fg-light), var(--danger-fg-dark));
+    --scrollbar-track: light-dark(var(--scrollbar-track-light), var(--scrollbar-track-dark));
+    --scrollbar-thumb: light-dark(var(--scrollbar-thumb-light), var(--scrollbar-thumb-dark));
+  }
+
+  /* Map <meta name="color-scheme"> back to CSS color-scheme so manual overrides work immediately */
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+
+  accent-color: var(--brand-primary);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :where(a:any-link, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Visually hidden utility (reveals focusable skip links on :focus-within/:active) */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Native modal dialog scroll containment & backdrop */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  background-color: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(3px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+/* Native <progress> styling per modern web standards (separate vendor pseudo-elements) */
+progress.rk-progress {
+  appearance: none;
+  border: 0 solid;
+  border-radius: 9999px;
+  overflow: clip;
+  background: var(--surface-muted);
+  container-type: inline-size;
+  --progress-bar-indeterminate-size: 32%;
+  --progress-bar-indeterminate-animation-duration: 1.4s;
+}
+
+progress.rk-progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+progress.rk-progress::-webkit-progress-value {
+  background: var(--brand-primary);
+  border-radius: 9999px;
+  transition: inline-size 0.25s ease;
+  animation: var(--progress-bar-animation, revert-rule);
+}
+
+progress.rk-progress::-moz-progress-bar {
+  background: var(--brand-primary);
+  border-radius: 9999px;
+  transition: inline-size 0.25s ease;
+  animation: var(--progress-bar-animation, revert-rule);
+}
+
+progress.rk-progress:indeterminate {
+  --progress-bar-animation: rk-progress-indeterminate var(--progress-bar-indeterminate-animation-duration) infinite linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  progress.rk-progress {
+    --progress-bar-indeterminate-animation-duration: 8s;
+  }
+}
+
+@keyframes rk-progress-indeterminate {
+  from,
+  to {
+    inline-size: var(--progress-bar-indeterminate-size);
+    margin-right: auto;
+  }
+  from {
+    translate: -100%;
+  }
+  to {
+    translate: 100cqi;
+  }
+}
+
+@media (forced-colors: active) {
+  .rk-card-focus {
+    border: 1px solid CanvasText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

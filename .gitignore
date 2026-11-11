@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# Python virtual environments & cache
+.venv/
+venv/
+backend/.venv/
+backend/venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+frontend/.env
+frontend/.env.local
+backend/.env
+
+# Temporary job files (keep directory structure)
+backend/temp/*
+!backend/temp/.gitkeep
+
+# Build info & Logs
+*.tsbuildinfo
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
